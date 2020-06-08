@@ -1,0 +1,9 @@
+# Krathalan's sshd config
+ChallengeResponseAuthentication no
+UsePAM no
+PasswordAuthentication no
+PubkeyAuthentication yes
+KexAlgorithms curve25519-sha256@libssh.org
+Ciphers chacha20-poly1305@openssh.com
+MACs hmac-sha2-512-etm@openssh.com
+AuthorizedKeysFile  %h/.ssh/authorized_keys
