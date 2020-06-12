@@ -1,1 +1,1 @@
-rd.luks.name=crypto_LUKS_UUID=cryptlvm root=/dev/arch/root resume=/dev/arch/swap nowatchdog slab_nomerge slub_debug=FZP page_poison=1 apparmor=1 security=apparmor cpuidle.governor=teo intel_iommu=on iommu=pt quiet audit=1
+rd.luks.name=3637b2fc-e507-481f-89e5-dbf30c332d06=cryptlvm root=/dev/arch/root resume=/dev/arch/swap nowatchdog slab_nomerge slub_debug=FZP page_poison=1 apparmor=1 security=apparmor cpuidle.governor=teo intel_iommu=on iommu=pt quiet audit=1
