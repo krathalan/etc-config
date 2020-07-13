@@ -1,9 +1,20 @@
 # Krathalan's sshd config
+
+HostKey /etc/ssh/ssh_host_ed25519_key
+Port 22
+
+# Only allow admin to login
+AllowUsers admin
+
+# Only allow pubkey auth
 ChallengeResponseAuthentication no
 UsePAM no
 PasswordAuthentication no
+PermitRootLogin no
 PubkeyAuthentication yes
+AuthorizedKeysFile  %h/.ssh/authorized_keys
+
+# Only use super secure algorithms
 KexAlgorithms curve25519-sha256@libssh.org
 Ciphers chacha20-poly1305@openssh.com
 MACs hmac-sha2-512-etm@openssh.com
-AuthorizedKeysFile  %h/.ssh/authorized_keys
