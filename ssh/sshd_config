@@ -1,5 +1,6 @@
 # Krathalan's sshd config
 
+LogLevel VERBOSE
 HostKey /etc/ssh/ssh_host_ed25519_key
 Port 22
 
