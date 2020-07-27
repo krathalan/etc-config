@@ -1,0 +1,6 @@
+[Match]
+Type=wlan
+
+[Network]
+DHCP=yes
+IPv6PrivacyExtensions=yes
