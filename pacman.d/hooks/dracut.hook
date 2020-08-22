@@ -3,12 +3,8 @@ Operation = Install
 Operation = Upgrade
 Type = Path
 Target = usr/lib/initcpio/*
-Target = usr/lib/modules/*arch*/vmlinuz
-Target = usr/lib/modules/*arch*/extramodules/nvidia*
-Target = usr/lib/modules/*lts*/vmlinuz
-Target = usr/lib/modules/*lts*/extramodules/nvidia*
-Target = usr/lib/modules/*zen*/vmlinuz
-Target = usr/lib/modules/*zen*/extramodules/nvidia*
+Target = usr/lib/modules/*/vmlinuz
+Target = usr/lib/modules/*/extramodules/nvidia*
 
 [Action]
 Description = Generating new initcpios with dracut...
