@@ -4,6 +4,9 @@ LogLevel VERBOSE
 HostKey /etc/ssh/ssh_host_ed25519_key
 Port 22
 
+# SFTP Settings
+Subsystem sftp internal-sftp
+
 # Only allow admin to login
 AllowUsers admin
 
