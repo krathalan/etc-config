@@ -1,0 +1,1 @@
+rd.luks.name=35f54e6f-728e-4f8b-a7a8-ad9e02b08cab=cryptlvm root=/dev/arch/root resume=/dev/arch/swap intel_iommu=on i915.enable_guc=0 i915.enable_gvt=1 lsm=lockdown,yama,apparmor apparmor=1 nowatchdog slab_nomerge slub_debug=FZP page_poison=1 cpuidle.governor=teo audit=1
