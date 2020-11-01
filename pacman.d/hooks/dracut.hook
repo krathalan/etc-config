@@ -9,5 +9,5 @@ Target = usr/lib/modules/*/extramodules/nvidia*
 [Action]
 Description = Generating new initcpios with dracut...
 When = PostTransaction
-Exec = /usr/bin/bash /root/dracut
+Exec = /usr/bin/gen-initrds
 NeedsTargets
