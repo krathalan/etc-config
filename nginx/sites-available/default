@@ -1,0 +1,70 @@
+# krathalan.net
+
+server {
+  # Files
+  root /var/www/html;
+  index index.html;
+  error_page 404 /404.html;
+
+  server_name krathalan.net www.krathalan.net;
+
+  # GPG keys
+  location /keys/ {
+    fancyindex on;
+    fancyindex_exact_size off;
+    fancyindex_localtime on;
+    fancyindex_css_href "https://krathalan.net/index.css";
+  }
+
+  # Reverse proxy for Radicale DAV server
+  location /radicale/ {
+    proxy_pass           http://localhost:5232/;
+    proxy_set_header     X-Script-Name /radicale;
+    proxy_set_header     X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header     X-Remote-User $remote_user;
+    proxy_set_header     Host $http_host;
+    auth_basic           "Radicale DAV: please sign in";
+    auth_basic_user_file /etc/krathalan/users;
+
+    # Stop BREACH
+    gzip off;
+    # Stop replay attacks with 0-RTT
+    ssl_early_data off;
+  }
+
+  location / {
+    # First attempt to serve request as file, then
+    # as directory, then fall back to displaying a 404.
+    try_files $uri $uri/ =404;
+  }
+
+  listen [::]:443 ssl http2 ipv6only=on; # managed by Certbot
+  listen 443 ssl http2; # managed by Certbot
+  ssl_certificate /etc/letsencrypt/live/krathalan.net/fullchain.pem; # managed by Certbot
+  ssl_certificate_key /etc/letsencrypt/live/krathalan.net/privkey.pem; # managed by Certbot
+  include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+
+  # Turn on HSTS
+  add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always;
+
+  # https://securityheaders.com
+  #add_header Content-Security-Policy "default-src 'self';  img-src 'self' liberapay.com img.shields.io;" always;
+  add_header X-Frame-Options "DENY" always;
+  add_header X-Content-Type-Options "nosniff" always;
+  add_header Referrer-Policy "no-referrer" always;
+}
+
+server {
+  if ($host = www.krathalan.net) {
+    return 301 https://$host$request_uri;
+  } # managed by Certbot
+  if ($host = krathalan.net) {
+    return 301 https://$host$request_uri;
+  } # managed by Certbot
+
+  listen 80 default_server;
+  listen [::]:80 default_server;
+
+  server_name krathalan.net www.krathalan.net;
+  return 404; # managed by Certbot
+}

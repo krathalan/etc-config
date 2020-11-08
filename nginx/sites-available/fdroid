@@ -1,0 +1,47 @@
+# fdroid.krathalan.net
+
+server {
+  # Files
+  root /var/www/fdroid;
+  index fdroid.html;
+  error_page 404 /404.html;
+
+  server_name fdroid.krathalan.net www.fdroid.krathalan.net;
+
+  location / {
+    # First attempt to serve request as file, then
+    # as directory, then fall back to displaying a 404.
+    try_files $uri $uri/ =404;
+  }
+
+  listen [::]:443 ssl; # managed by Certbot
+  listen 443 ssl; # managed by Certbot
+  ssl_certificate /etc/letsencrypt/live/fdroid.krathalan.net/fullchain.pem; # managed by Certbot
+  ssl_certificate_key /etc/letsencrypt/live/fdroid.krathalan.net/privkey.pem; # managed by Certbot
+  include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+
+  # Turn on HSTS
+  add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always;
+
+  # https://securityheaders.com
+  add_header Content-Security-Policy "default-src 'self'; img-src 'self' liberapay.com img.shields.io;" always;
+  add_header X-Frame-Options "DENY" always;
+  add_header X-Content-Type-Options "nosniff" always;
+  add_header Referrer-Policy "no-referrer" always;
+}
+
+
+server {
+  if ($host = www.fdroid.krathalan.net) {
+    return 301 https://$host$request_uri;
+  } # managed by Certbot
+  if ($host = fdroid.krathalan.net) {
+    return 301 https://$host$request_uri;
+  } # managed by Certbot
+
+  listen 80 ;
+  listen [::]:80 ;
+  
+  server_name fdroid.krathalan.net www.fdroid.krathalan.net;
+  return 404; # managed by Certbot
+}
