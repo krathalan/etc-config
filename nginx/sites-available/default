@@ -28,8 +28,6 @@ server {
 
     # Stop BREACH
     gzip off;
-    # Stop replay attacks with 0-RTT
-    ssl_early_data off;
   }
 
   location / {
