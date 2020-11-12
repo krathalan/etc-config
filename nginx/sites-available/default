@@ -27,6 +27,7 @@ server {
     auth_basic_user_file /etc/krathalan/users;
 
     # Stop BREACH
+    brotli off;
     gzip off;
   }
 
