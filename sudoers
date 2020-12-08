@@ -8,6 +8,7 @@
 ##
 
 Defaults insults
+Defaults env_reset,timestamp_timeout=30
 Defaults editor = "/usr/bin/nano"
 
 ##
