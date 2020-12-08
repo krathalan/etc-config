@@ -7,7 +7,7 @@ Port 22
 # SFTP Settings
 Subsystem sftp internal-sftp
 
-# Only allow admin to login
+# Only allow users that belong to the 'allowssh' group
 AllowGroups allowssh
 
 # Only allow pubkey auth
