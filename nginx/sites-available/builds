@@ -15,7 +15,7 @@ server {
     fancyindex_localtime on;
     fancyindex_css_href "https://builds.krathalan.net/index.css";
   }
-  location /aarch64/ {
+  location /archive/ {
     fancyindex on;
     fancyindex_exact_size off;
     fancyindex_localtime on;
