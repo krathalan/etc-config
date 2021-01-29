@@ -1,0 +1,28 @@
+# Use default unit file from Arch Wiki:
+# https://wiki.archlinux.org/index.php/Postfix#Postgrey
+
+# However, use a Unix socket instead of a local port, and
+# specify runtime directory and runtime directory mode.
+
+[Unit]
+Description=Postfix Greylisting Service
+Before=postfix.service
+
+[Service]
+Type=forking
+User=postgrey
+Group=postgrey
+RuntimeDirectory=postgrey
+RuntimeDirectoryMode=0770
+PIDFile=/run/postgrey/postgrey.pid
+ExecStart=/usr/bin/postgrey --unix=/run/postgrey/postgrey.sock \
+	--pidfile=/run/postgrey/postgrey.pid \
+	--group=postgrey --user=postgrey \
+	--daemonize \
+	--greylist-text="Greylisted for %%s seconds"
+Restart=always
+RestartSec=5
+TimeoutSec=10
+
+[Install]
+WantedBy=multi-user.target
