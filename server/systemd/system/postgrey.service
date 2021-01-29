@@ -15,9 +15,7 @@ User=postgrey
 Group=postgrey
 RuntimeDirectory=postgrey
 RuntimeDirectoryMode=0770
-PIDFile=/run/postgrey/postgrey.pid
 ExecStart=/usr/bin/postgrey --unix=/run/postgrey/postgrey.sock \
-	--pidfile=/run/postgrey/postgrey.pid \
 	--group=postgrey --user=postgrey \
 	--daemonize \
 	--greylist-text="Greylisted for %%s seconds"
