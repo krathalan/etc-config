@@ -3,6 +3,7 @@
 
 # However, use a Unix socket instead of a local port, and
 # specify runtime directory and runtime directory mode.
+# Additionally use systemd to run it as the user/group desired.
 
 [Unit]
 Description=Postfix Greylisting Service
