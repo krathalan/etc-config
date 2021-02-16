@@ -2,7 +2,7 @@
 
 LogLevel VERBOSE
 HostKey /etc/ssh/ssh_host_ed25519_key
-Port 22
+Port 44369
 
 # SFTP Settings
 Subsystem sftp internal-sftp
