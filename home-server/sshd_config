@@ -1,0 +1,24 @@
+# Krathalan's sshd config
+
+LogLevel VERBOSE
+HostKey /etc/ssh/ssh_host_ed25519_key
+Port 44369
+
+# SFTP Settings
+Subsystem sftp internal-sftp
+
+# Only allow users that belong to the 'allowssh' group
+AllowGroups allowssh
+
+# Only allow pubkey auth
+ChallengeResponseAuthentication no
+UsePAM yes
+PasswordAuthentication no
+PermitRootLogin no
+PubkeyAuthentication yes
+AuthorizedKeysFile  %h/.ssh/authorized_keys
+
+# Only use super secure algorithms
+KexAlgorithms curve25519-sha256@libssh.org
+Ciphers chacha20-poly1305@openssh.com
+MACs hmac-sha2-512-etm@openssh.com
