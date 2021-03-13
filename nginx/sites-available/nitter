@@ -1,0 +1,37 @@
+# nitter.krathalan.net
+# Reverse proxying local nitter service
+
+server {
+  server_name nitter.krathalan.net www.nitter.krathalan.net;
+
+	location / {
+		proxy_pass http://localhost:13500;
+	}
+
+	location = /robots.txt {
+		add_header Content-Type text/plain;
+		return 200 "User-agent: *\nDisallow: /\n";
+	}
+
+		# Security Headers
+	add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+	add_header Content-Security-Policy "default-src 'none'; script-src 'self' 'unsafe-inline'; img-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; object-src 'none'; media-src 'self' blob:; worker-src 'self' blob:; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; connect-src 'self' https://*.twimg.com; manifest-src 'self'";
+	add_header X-Content-Type-Options nosniff;
+	add_header X-Frame-Options DENY;
+	add_header X-XSS-Protection "1; mode=block";
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/nitter.krathalan.net/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/nitter.krathalan.net/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+server {
+    if ($host = nitter.krathalan.net) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+  server_name nitter.krathalan.net www.nitter.krathalan.net;
+    listen 80;
+    return 404; # managed by Certbot
+}

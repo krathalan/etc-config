@@ -1,1 +1,1 @@
-rd.luks.name=e894c33b-90e7-4b5f-936d-05207048c9a4=cryptlvm root=/dev/alt/root resume=/dev/alt/swap nowatchdog slab_nomerge slub_debug=FZP page_poison=1 apparmor=1 lsm=lockdown,yama,apparmor cpuidle.governor=teo audit=1
+rd.luks.name=e894c33b-90e7-4b5f-936d-05207048c9a4=cryptalt root=/dev/alt/root apparmor=1 lsm=lockdown,yama,apparmor nowatchdog slab_nomerge slub_debug=FZP page_poison=1 cpuidle.governor=teo audit=1
