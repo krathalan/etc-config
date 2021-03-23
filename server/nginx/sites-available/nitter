@@ -21,17 +21,21 @@ server {
 	add_header X-XSS-Protection "1; mode=block";
 
     listen 443 ssl; # managed by Certbot
+    listen [::]:443 ssl; # managed by Certbot
     ssl_certificate /etc/letsencrypt/live/nitter.krathalan.net/fullchain.pem; # managed by Certbot
     ssl_certificate_key /etc/letsencrypt/live/nitter.krathalan.net/privkey.pem; # managed by Certbot
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 }
 server {
     if ($host = nitter.krathalan.net) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
+    if ($host = www.nitter.krathalan.net) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
 
   server_name nitter.krathalan.net www.nitter.krathalan.net;
     listen 80;
+    listen [::]:80;
     return 404; # managed by Certbot
 }
