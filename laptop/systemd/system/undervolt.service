@@ -1,0 +1,6 @@
+[Unit]
+Description=undervolt
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/undervolt/undervolt.py -v --core -100 --gpu -85 --cache -100 --uncore -100 --analogio -100
