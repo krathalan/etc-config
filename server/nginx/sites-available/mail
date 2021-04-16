@@ -19,6 +19,9 @@ server {
   ssl_certificate_key /etc/letsencrypt/live/mail.krathalan.net/privkey.pem; # managed by Certbot
   include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
 
+  # Disable FLoC
+  add_header Permissions-Policy interest-cohort=();
+
   # Turn on HSTS
   add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always;
 
