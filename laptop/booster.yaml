@@ -1,0 +1,6 @@
+universal: false
+modules: i915
+compression: lz4
+strip: true
+vconsole: true
+enable_lvm: true
