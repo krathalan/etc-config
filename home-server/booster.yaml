@@ -1,0 +1,3 @@
+universal: false
+compression: lz4
+strip: true
