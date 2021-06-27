@@ -11,6 +11,7 @@ server {
   # This is where *.pkg.tar.zst{,.sig} files are
   location /x86_64/ {
     brotli off;
+    gzip off;
     fancyindex on;
     fancyindex_exact_size off;
     fancyindex_localtime on;
