@@ -1,0 +1,7 @@
+# Krathalan's postgrey whitelist clients
+
+/^.*sgmail\.github\.com$/
+/^.*outlook\.com$/
+/^.*providence\.org$/
+/^.*wa\.gov$/
+newegg.com
