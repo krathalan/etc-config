@@ -1,0 +1,11 @@
+[Unit]
+Description=Update spamassassin patterns
+After=network.target
+
+[Service]
+Type=oneshot
+
+ExecStart=/usr/bin/vendor_perl/sa-update -v
+SuccessExitStatus=1
+ExecStart=/usr/bin/vendor_perl/sa-compile
+ExecStart=/usr/bin/systemctl -q --no-block try-restart spamassassin.service

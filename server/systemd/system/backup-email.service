@@ -1,0 +1,30 @@
+[Unit]
+Description=Backup /etc and /home
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash /root/backup/backup_email.sh
+
+PrivateNetwork=yes
+NoNewPrivileges=yes
+CapabilityBoundingSet=CAP_DAC_OVERRIDE CAP_CHOWN
+RestrictAddressFamilies=AF_UNIX
+IPAddressDeny=any
+ProtectSystem=strict
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectHostname=yes
+ProtectClock=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+RemoveIPC=yes
+SystemCallFilter=@system-service @privileged
+SystemCallFilter=~@resources @module @mount @reboot @swap @clock @raw-io
+SystemCallArchitectures=native
