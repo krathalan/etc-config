@@ -1,0 +1,22 @@
+[DEFAULT]
+# Misc
+banaction = firewallcmd-allports
+
+# "bantime" is the number of seconds that a host is banned.
+# value of -1 is a permaban
+bantime  = 604800
+
+# A host is banned if it has generated "maxretry"
+# during the last "findtime" seconds.
+findtime = 604800
+maxretry = 2
+
+[Definition]
+logtarget = /var/log/fail2ban/fail2ban.log
+
+[dovecot]
+enabled = true
+[postfix]
+enabled = true
+[pam-generic]
+enabled = true

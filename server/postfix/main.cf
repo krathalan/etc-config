@@ -1,0 +1,75 @@
+# See /usr/share/postfix/main.cf.dist for a commented, more complete version
+
+# Block messages from email addresses in blacklisted_roles
+# Reject email if SMTP client hostname doesn’t have valid A record or if MAIL FROM domain has heither MX record nor A record
+smtpd_sender_restrictions = permit_mynetworks, permit_sasl_authenticated, check_sender_access hash:/etc/postfix/blacklisted_roles, reject_unknown_sender_domain, reject_unknown_reverse_client_hostname, reject_unknown_client_hostname
+
+# Use Spamhaus reputation block lists
+smtpd_client_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination, reject_rbl_client zen.spamhaus.org, reject_rbl_client cbl.abuseat.org, permit
+
+# Use postgrey for greylisting
+smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, check_policy_service unix:/run/postgrey/postgrey.sock
+
+# Check HELO/EHLO validity
+smtpd_helo_required = yes
+smtpd_helo_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_invalid_helo_hostname, reject_non_fqdn_helo_hostname, reject_unknown_helo_hostname
+
+# Don't be an open relay
+smtpd_relay_restrictions = permit_mynetworks, permit_sasl_authenticated, defer_unauth_destination
+
+# Run mail through opendkim/dmarc
+milter_default_action = accept
+milter_protocol = 6
+non_smtpd_milters=unix:/run/opendkim/opendkim.sock, unix:/run/opendmarc/opendmarc.sock
+smtpd_milters=unix:/run/opendkim/opendkim.sock, unix:/run/opendmarc/opendmarc.sock
+
+# TLS parameters
+smtp_tls_CAfile = /etc/letsencrypt/live/mail.krathalan.net/cert.pem
+smtpd_tls_cert_file = /etc/letsencrypt/live/mail.krathalan.net/fullchain.pem
+smtpd_tls_key_file = /etc/letsencrypt/live/mail.krathalan.net/privkey.pem
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+smtp_tls_loglevel = 1
+smtpd_use_tls = yes
+
+# https://ssl-config.mozilla.org/
+smtp_tls_security_level = may
+smtpd_tls_auth_only = yes
+smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1
+smtpd_tls_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1
+smtpd_tls_mandatory_ciphers = medium
+tls_medium_cipherlist = ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384
+smtpd_tls_dh1024_param_file = /etc/krathalan/dhparams.pem
+
+# Fix testssl.sh issues
+tls_preempt_cipherlist = yes
+tls_ssl_options = NO_RENEGOTIATION
+
+# Auth
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_security_options = noanonymous, noplaintext
+smtpd_sasl_tls_security_options = noanonymous
+
+# Misc
+myhostname = mail.krathalan.net
+mydestination = $myhostname, krathalan.net, localhost, localhost.localdomain, localhost
+
+# Other/default trash
+smtpd_banner = $myhostname ESMTP $mail_name
+home_mailbox = Mail/Inbox/
+biff = no
+append_dot_mydomain = no
+readme_directory = no
+compatibility_level = 3.6
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+myorigin = /etc/mailname
+relayhost =
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
+mailbox_size_limit = 0
+recipient_delimiter = +
+inet_interfaces = all
+inet_protocols = all
+mailbox_command = /usr/lib/dovecot/deliver
