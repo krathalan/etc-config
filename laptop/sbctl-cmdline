@@ -1,1 +1,1 @@
-rd.luks.name=001e9d5d-3ac7-4de7-8872-a93ed6c894b5=cryptlvm root=/dev/arch/root resume=/dev/arch/swap intel_iommu=on nowatchdog apparmor=1 lsm=lockdown,yama,apparmor cpuidle.governor=teo audit=1 loglevel=3
+rd.luks.name=1471a7e1-e910-496a-a607-57c3045a982c=cryptlvm root=/dev/arch/root resume=/dev/arch/swap intel_iommu=on nowatchdog apparmor=1 lsm=lockdown,yama,apparmor cpuidle.governor=teo audit=1 audit_backlog_limit=256 loglevel=3
