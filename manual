@@ -1,0 +1,86 @@
+Things to enable/do manually
+
+###########
+# hidepid #
+###########
+Add the following to /etc/fstab:
+
+# hidepid
+proc	/proc	proc	nosuid,nodev,noexec,hidepid=2,gid=proc	0	0
+
+##########################
+# System Services/Timers #
+##########################
+Mask:
+systemd-ask-password-console.path
+systemd-ask-password-wall.path
+udisks2.service
+
+Enable:
+apparmor.service
+auditd.service
+bluetooth.service
+dictd.service
+firewalld.service
+NetworkManager.service
+rngd.service
+tlp.service
+paccache.timer
+undervolt.timer
+
+########################
+# User Services/Timers #
+########################
+Mask:
+at-spi-dbus-bus.service
+gvfs-daemon.service
+gvfs-metadata.service
+gvfs-udisks2-volume-monitor.service
+gpg-agent-browser.socket
+gpg-agent-extra.socket
+gpg-agent-ssh.socket
+
+Enable:
+foot-server.service
+gpg-agent.service
+mako.service
+ssh-agent.service
+swaybg.service
+swayidle.service
+syncthing.service
+waybar.service
+wlsunset.service
+wob.service
+cache_unread_emails.timer
+mbsync.timer
+vdirsyncer.timer
+
+#############
+# firewalld #
+#############
+firewall-cmd --set-default-zone=drop
+firewall-cmd --add-service=syncthing
+firewall-cmd --runtime-to-permanent
+
+#################
+# Miscellaneous #
+#################
+Make the following dirs in ~/.config:
+Code - OSS/User
+micro
+transmission-daemon
+systemd/user
+
+Make ~/.local/share/mail with the following subdirs:
+dev-krathalan
+hunter-krathalan
+school-gmail
+school-krathalan
+shopping-krathalan
+
+Ensure Xorg is running rootless.
+Use booster, set up secure boot.
+Copy fox.sh to /usr/bin and chown root:root.
+Run `vdirsyncer discover contacts`.
+Set up vscode with Material Theme, Material Theme Icons, and Shellcheck extensions.
+Set up ~/.local/share/chromium-extensions.
