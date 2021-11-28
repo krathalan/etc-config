@@ -1,8 +1,10 @@
 Things to enable/do manually
 
-###########
-# hidepid #
-###########
+#########
+# fstab #
+#########
+Change relatime to noatime.
+
 Add the following to /etc/fstab:
 
 # hidepid
