@@ -1,6 +1,6 @@
 universal: false
 modules: nvidia,nvidia_modeset,nvidia_drm,nvidia_uvm
-compression: lz4
+compression: zstd
 strip: true
 vconsole: true
 enable_lvm: true
