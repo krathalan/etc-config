@@ -1,5 +1,12 @@
 Things to enable/do manually
 
+############
+# AppArmor #
+############
+Ensure boot options set to include apparmor.
+Enforce all in /etc/apparmor.d/*; copy local overrides from apparmor-profiles/.
+Edit /etc/apparmor/parser.conf to turn on caching.
+
 #########
 # fstab #
 #########
@@ -27,6 +34,7 @@ firewalld.service
 NetworkManager.service
 rngd.service
 tlp.service
+systemd-timesyncd.service
 paccache.timer
 undervolt.timer
 
