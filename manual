@@ -1,5 +1,10 @@
 Things to enable/do manually
 
+#################
+# CPU Microcode #
+#################
+Install either amd-ucode or intel-ucode manually.
+
 ############
 # AppArmor #
 ############
