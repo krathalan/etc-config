@@ -19,6 +19,7 @@ anders ALL=(ALL) ALL
 
 ## Krack commands
 builder ALL=(ALL) NOPASSWD:/usr/bin/makechrootpkg, /usr/bin/arch-nspawn
+Defaults:builder env_keep += "BUILDTOOL BUILDTOOLVER"
 
 ## Uncomment to allow members of group wheel to execute any command
 # %wheel ALL=(ALL) ALL
