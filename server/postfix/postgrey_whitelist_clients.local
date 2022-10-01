@@ -5,5 +5,11 @@
 /^.*providence\.org$/
 /^.*wa\.gov$/
 /^.*americanexpress\.com$/
-/^.*txn-email.account.sony.com
+/^.*mandrillapp\.com$/
+/^.*txn-email.account.sony\.com$/
+/^.*apple\.com$/
+/^.*amazonses\.com$/
+/^.*hp\.com$/
+/^.*steampowered\.com$/
+/^.*mailer\.shopify\.com$/
 newegg.com
