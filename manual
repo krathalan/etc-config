@@ -15,8 +15,6 @@ Edit /etc/apparmor/parser.conf to turn on caching.
 #########
 # fstab #
 #########
-Change relatime to noatime.
-
 Add the following to /etc/fstab:
 
 # hidepid
@@ -66,6 +64,7 @@ syncthing.service
 waybar.service
 wlsunset.service
 wob.service
+wobpipe-audio-cache.service
 cache_unread_emails.timer
 mbsync.timer
 vdirsyncer.timer
@@ -77,9 +76,13 @@ firewall-cmd --set-default-zone=drop
 firewall-cmd --add-service=syncthing
 firewall-cmd --runtime-to-permanent
 
-#################
-# Miscellaneous #
-#################
+##############################################
+# Directory creation to avoid symlink issues #
+##############################################
+Make the following dirs in ~/:
+.gnupg
+.ssh
+
 Make the following dirs in ~/.config:
 Code - OSS/User
 micro
@@ -93,8 +96,13 @@ school-gmail
 school-krathalan
 shopping-krathalan
 
-Ensure Xorg is running rootless.
-Use booster, set up secure boot.
+#################
+# Miscellaneous #
+#################
+If using Xorg, ensure Xorg is running rootless.
+If using Wayland, consider disabling Xwayland.
+Use booster for initramfs.
+Set up secure boot.
 Copy fox.sh to /usr/bin and chown root:root.
 Run `vdirsyncer discover contacts`.
 Set up vscode with Material Theme, Material Theme Icons, and Shellcheck extensions.
