@@ -1,4 +1,4 @@
-Things to enable/do manually
+See `ksa` script in ~/git/miscellaneous-scripts/.
 
 #################
 # CPU Microcode #
@@ -8,102 +8,19 @@ Install either amd-ucode or intel-ucode manually.
 ############
 # AppArmor #
 ############
-Ensure boot options set to include apparmor.
-Enforce all in /etc/apparmor.d/*; copy local overrides from apparmor-profiles/.
+Ensure boot options set to include apparmor. This changes frequently so check the Arch Wiki page to see what the correct boot options are.
+Enforce all in /etc/apparmor.d/*; copy local overrides from ~/git/apparmor-profiles/.
 Edit /etc/apparmor/parser.conf to turn on caching.
-
-#########
-# fstab #
-#########
-Add the following to /etc/fstab:
-
-# hidepid
-proc	/proc	proc	nosuid,nodev,noexec,hidepid=2,gid=proc	0	0
-
-##########################
-# System Services/Timers #
-##########################
-Mask:
-systemd-ask-password-console.path
-systemd-ask-password-wall.path
-udisks2.service
-
-Enable:
-apparmor.service
-auditd.service
-bluetooth.service
-dictd.service
-firewalld.service
-NetworkManager.service
-rngd.service
-tlp.service
-systemd-timesyncd.service
-paccache.timer
-undervolt.timer
-
-########################
-# User Services/Timers #
-########################
-Mask:
-at-spi-dbus-bus.service
-gvfs-daemon.service
-gvfs-metadata.service
-gvfs-udisks2-volume-monitor.service
-gpg-agent-browser.socket
-gpg-agent-extra.socket
-gpg-agent-ssh.socket
-
-Enable:
-foot-server.service
-gpg-agent.service
-mako.service
-ssh-agent.service
-swaybg.service
-swayidle.service
-syncthing.service
-waybar.service
-wlsunset.service
-wob.service
-wobpipe-audio-cache.service
-cache_unread_emails.timer
-mbsync.timer
-vdirsyncer.timer
-
-#############
-# firewalld #
-#############
-firewall-cmd --set-default-zone=drop
-firewall-cmd --add-service=syncthing
-firewall-cmd --runtime-to-permanent
-
-##############################################
-# Directory creation to avoid symlink issues #
-##############################################
-Make the following dirs in ~/:
-.gnupg
-.ssh
-
-Make the following dirs in ~/.config:
-Code - OSS/User
-micro
-transmission-daemon
-systemd/user
-
-Make ~/.local/share/mail with the following subdirs:
-dev-krathalan
-hunter-krathalan
-school-gmail
-school-krathalan
-shopping-krathalan
 
 #################
 # Miscellaneous #
 #################
+Enable TRIM: https://wiki.archlinux.org/title/Dm-crypt/Specialties#Discard/TRIM_support_for_solid_state_drives_(SSD)
 If using Xorg, ensure Xorg is running rootless.
 If using Wayland, consider disabling Xwayland.
 Use booster for initramfs.
-Set up secure boot.
 Copy fox.sh to /usr/bin and chown root:root.
 Run `vdirsyncer discover contacts`.
 Set up vscode with Material Theme, Material Theme Icons, and Shellcheck extensions.
 Set up ~/.local/share/chromium-extensions.
+Set up secure boot.
