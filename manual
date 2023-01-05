@@ -18,10 +18,19 @@ Edit /etc/apparmor/parser.conf to turn on caching.
 You may wish to add your user to some groups:
 - video: for controlling screen brightness with `light`
 
+########
+# TRIM #
+########
+Enable TRIM: https://wiki.archlinux.org/title/Dm-crypt/Specialties#Discard/TRIM_support_for_solid_state_drives_(SSD)
+
+TL;DR:
+1. add 'discard' to options in /etc/fstab, e.g. 
+      /dev/sda1  /           ext4  defaults,discard   0  1
+2. add 'rd.luks.options=discard' to boot parameters
+
 #################
 # Miscellaneous #
 #################
-Enable TRIM: https://wiki.archlinux.org/title/Dm-crypt/Specialties#Discard/TRIM_support_for_solid_state_drives_(SSD)
 If using Xorg, ensure Xorg is running rootless.
 If using Wayland, consider disabling Xwayland.
 Use booster for initramfs.
