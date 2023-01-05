@@ -12,6 +12,12 @@ Ensure boot options set to include apparmor. This changes frequently so check th
 Enforce all in /etc/apparmor.d/*; copy local overrides from ~/git/apparmor-profiles/.
 Edit /etc/apparmor/parser.conf to turn on caching.
 
+##########
+# Groups #
+##########
+You may wish to add your user to some groups:
+- video: for controlling screen brightness with `light`
+
 #################
 # Miscellaneous #
 #################
