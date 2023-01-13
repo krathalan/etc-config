@@ -12,4 +12,8 @@
 /^.*hp\.com$/
 /^.*steampowered\.com$/
 /^.*mailer\.shopify\.com$/
+/^.*convertkit\.com$/
+/^.*onlyfans\.com$/
+/^.*pub.mail.unifiedlayer\.com$/
+/^.*bluehost\.com$/
 newegg.com
