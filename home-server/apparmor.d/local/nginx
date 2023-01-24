@@ -1,1 +1,1 @@
-owner /srv/http/pacman-cache/{,**} rw,
+owner /mnt/storage/pacman-cache/{,**} rw,

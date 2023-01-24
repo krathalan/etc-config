@@ -1,5 +1,5 @@
 [Unit]
-Description=Weekly removal of old packages from /srv/http/pacman-cache
+Description=Weekly removal of old packages from /mnt/storage/pacman-cache
 
 [Timer]
 OnCalendar=weekly
