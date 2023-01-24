@@ -1,0 +1,13 @@
+[Unit]
+Description=Remove old packages from /srv/http/pacman-cache
+
+[Service]
+Type=oneshot
+ExecStart=find /srv/http/pacman-cache/ -type d -exec paccache -v -r -k 1 -c {} \;
+
+# Lowering priority
+OOMScoreAdjust=1000
+Nice=19
+CPUSchedulingPolicy=idle
+IOSchedulingClass=idle
+IOSchedulingPriority=7
