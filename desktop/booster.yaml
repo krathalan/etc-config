@@ -1,5 +1,5 @@
+modules_force_load: amdgpu
 universal: false
-modules: nvidia,nvidia_modeset,nvidia_drm,nvidia_uvm
 compression: zstd
 strip: true
 vconsole: true
