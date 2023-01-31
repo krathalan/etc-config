@@ -1,0 +1,10 @@
+[Unit]
+Description=Synchronize krack pkgcache with reverse proxy pacman cache timer
+
+[Timer]
+OnBootSec=2m
+OnUnitActiveSec=1h
+Unit=synchronize-krathalan-repo.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,6 @@
+[Unit]
+Description=Synchronize krack pkgcache with reverse proxy pacman cache
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/synchronize-krathalan-repo.sh
