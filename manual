@@ -24,9 +24,10 @@ You may wish to add your user to some groups:
 Enable TRIM: https://wiki.archlinux.org/title/Dm-crypt/Specialties#Discard/TRIM_support_for_solid_state_drives_(SSD)
 
 TL;DR:
-1. add 'discard' to options in /etc/fstab, e.g. 
+1. add 'rd.luks.options=discard' to boot parameters
+2. for ext4, add 'discard' to options in /etc/fstab, e.g. 
       /dev/sda1  /           ext4  defaults,discard   0  1
-2. add 'rd.luks.options=discard' to boot parameters
+   for xfs, enable fstrim.timer
 
 #################
 # Miscellaneous #
