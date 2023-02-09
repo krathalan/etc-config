@@ -3,4 +3,4 @@ Description=undervolt
 
 [Service]
 Type=oneshot
-ExecStart=/usr/lib/undervolt/undervolt.py -v --core -85 --gpu -85 --cache -85 --uncore -85 --analogio -85
+ExecStart=/usr/lib/undervolt/undervolt.py -v --core -80 --gpu -70 --cache -80 --uncore -80 --analogio -80
