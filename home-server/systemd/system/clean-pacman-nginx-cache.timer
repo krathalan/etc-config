@@ -1,0 +1,10 @@
+[Unit]
+Description=Weekly removal of old packages from /mnt/storage/pacman-cache
+
+[Timer]
+OnCalendar=weekly
+AccuracySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
