@@ -17,4 +17,5 @@
 /^.*pub.mail.unifiedlayer\.com$/
 /^.*bluehost\.com$/
 /^.*iphmx\.com$/
+/^.*\.outbound-mail\.sendgrid\.net$/
 newegg.com
