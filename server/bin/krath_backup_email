@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+SCRIPT_NAME="${0##*/}"
+TMP_DIR="$(mktemp -d -t "${SCRIPT_NAME}_XXXXXXXX")"
+readonly OUTFILE="/root/backup/krathalan-net-backup_$(date +%b-%d-%Y-%H%M).tar.br"
+
+trap 'rm -rf "${TMP_DIR}"' EXIT
+
+mkdir -p "/root/backup"
+
+for homedir in /home/*; do
+  if [[ "${homedir}" == *"admin"* ]]; then
+    continue
+  fi
+
+  cp -r "${homedir}" "${TMP_DIR}"
+done
+
+cp -r "/etc" "/var/lib/radicale" "${TMP_DIR}"
+
+tar -I "brotli -5" -cf "${OUTFILE}" "${TMP_DIR}"

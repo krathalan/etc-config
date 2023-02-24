@@ -3,7 +3,7 @@ Description=Backup /etc and /home
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/bash /root/backup/backup_email.sh
+ExecStart=/usr/bin/krath_backup_email
 
 PrivateNetwork=yes
 NoNewPrivileges=yes
