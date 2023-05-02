@@ -39,7 +39,7 @@ set -eu # (Eo pipefail) is Bash only!
 
 # Other
 KRACK_PKGCACHE_DIR="/home/builder/.local/share/krack/pkgcache"
-PACMAN_CACHE_DIR="/mnt/storage/pacman-cache/krathalan/os/x86_64"
+PACMAN_CACHE_DIR="/var/lib/nginx-pacman-cache/krathalan/os/x86_64"
 
 # -----------------------------------------
 # ---------------- Script -----------------

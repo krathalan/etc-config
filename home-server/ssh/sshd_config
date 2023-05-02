@@ -12,7 +12,7 @@ AllowGroups allowssh
 
 # Only allow pubkey auth
 ChallengeResponseAuthentication no
-UsePAM yes
+UsePAM no
 PasswordAuthentication no
 PermitRootLogin no
 PubkeyAuthentication yes

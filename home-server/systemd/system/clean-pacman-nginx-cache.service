@@ -3,7 +3,7 @@ Description=Remove old packages from /mnt/storage/pacman-cache
 
 [Service]
 Type=oneshot
-ExecStart=find /mnt/storage/pacman-cache/ -type d -exec paccache -v -r -k 1 -c {} \;
+ExecStart=find /var/lib/nginx-pacman-cache/ -type d -exec paccache -v -r -k 1 -c {} \;
 
 # Lowering priority
 OOMScoreAdjust=1000
