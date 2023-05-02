@@ -29,6 +29,15 @@ TL;DR:
       /dev/sda1  /           ext4  defaults,discard   0  1
    for xfs, enable fstrim.timer
 
+###############
+# home-server #
+###############
+You may run into the following issues:
+1. mosh won't work even without a firewall
+    solution: disable /etc/apparmor.d/mosh profile
+2. pihole web won't load the FTL information
+    solution: add 'http' and 'pihole' users to the 'proc' group
+
 #################
 # Miscellaneous #
 #################
