@@ -1,1 +1,1 @@
-owner /mnt/storage/pacman-cache/{,**} rw,
+owner /var/lib/nginx-pacman-cache/{,**} rw,
