@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 #
 # Description: Simple sh script to synchronize /home/builder/.local/share/krack/pkgcache
-#              with reverse proxy nginx pacman cache at /mnt/storage/pacman-cache/krathalan/os/x86_64
+#              with reverse proxy nginx pacman cache at /var/lib/nginx-pacman-cache/krathalan/os/x86_64
 #
 # Homepage: https://github.com/krathalan/miscellaneous-scripts
 #
