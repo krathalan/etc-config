@@ -1,11 +1,10 @@
 [Unit]
-Description=Argo Tunnel client daemon for Cloudflared
+Description=Cloudflared DNS over HTTPS proxy
 After=network.target
 Wants=network.target
 
 [Service]
-Type=notify
-ExecStart=/usr/bin/cloudflared --config /etc/cloudflared/config.yml --no-autoupdate
+ExecStart=/usr/bin/cloudflared proxy-dns --port 53000 --upstream https://1.1.1.1/dns-query --upstream https://1.0.0.1/dns-query
 User=cloudflared
 Group=cloudflared
 Restart=on-failure
@@ -28,10 +27,11 @@ LimitNOFILE=1048576
 UMask=0077
 
 ProtectSystem=strict
-ReadWritePaths=/var/log/cloudflared.log
+ReadWritePaths=/var/log
 ProtectHome=true
 PrivateTmp=true
 PrivateDevices=true
+PrivateUsers=true
 ProtectHostname=true
 ProtectClock=true
 ProtectKernelTunables=true
@@ -45,6 +45,7 @@ MemoryDenyWriteExecute=true
 RestrictRealtime=true
 RestrictSUIDSGID=true
 RemoveIPC=true
+ProcSubset=pid
 
 SystemCallFilter=@system-service
 SystemCallFilter=~@privileged @resources
