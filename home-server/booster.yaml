@@ -1,3 +1,4 @@
+modules_force_load: i915
 universal: false
 compression: lz4
 strip: true
