@@ -1,4 +1,9 @@
 # Arch Linux repository mirrorlist
-# Use dynamic pacman cache reverse proxy on home-server
 
+# Use dynamic pacman cache reverse proxy on home-server
 Server = http://192.168.1.2:8080/$repo/os/$arch
+
+# Uncomment to use regular mirror if home-server unavailable
+#Server = https://ziply.mm.fcix.net/archlinux/$repo/os/$arch
+#Server = https://mirrors.ocf.berkeley.edu/archlinux/$repo/os/$arch
+#Server = https://archmirror1.octyl.net/$repo/os/$arch

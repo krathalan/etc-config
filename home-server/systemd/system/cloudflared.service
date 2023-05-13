@@ -7,6 +7,7 @@ Wants=network.target
 ExecStart=/usr/bin/cloudflared proxy-dns --port 53000 --upstream https://1.1.1.1/dns-query --upstream https://1.0.0.1/dns-query
 User=cloudflared
 Group=cloudflared
+Nice=-10
 Restart=on-failure
 RestartSec=5s
 TimeoutStartSec=0
