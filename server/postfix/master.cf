@@ -129,5 +129,7 @@ smtps     inet  n       -       n       -       -       smtpd
   -o syslog_name=postfix/smtps
   -o smtpd_tls_wrappermode=yes
   -o smtpd_sasl_auth_enable=yes
+  -o smtpd_relay_restrictions=
+  -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
 spamassassin unix -     n       n       -       -       pipe
   user=spamd argv=/usr/bin/vendor_perl/spamc -f -e /usr/sbin/sendmail -oi -f ${sender} ${recipient}
