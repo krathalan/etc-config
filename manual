@@ -1,4 +1,8 @@
 See `ksa` script in ~/git/miscellaneous-scripts/.
+-> fstab_proc_hidepid
+-> firewall_setup
+-> make_makepkg_chroot
+-> etc.
 
 #################
 # CPU Microcode #
@@ -33,14 +37,13 @@ TL;DR:
 # home-server #
 ###############
 You may run into the following issues:
-1. mosh won't work even without a firewall
-    solution: disable /etc/apparmor.d/mosh profile
-2. pihole web won't load the FTL information
+1. pihole web won't load the FTL information
     solution: add 'http' and 'pihole' users to the 'proc' group
 
 #################
 # Miscellaneous #
 #################
+You may wish to consider using noatime in your root partition mount options.
 If using Xorg, ensure Xorg is running rootless.
 If using Wayland, consider disabling Xwayland.
 Use booster for initramfs.
