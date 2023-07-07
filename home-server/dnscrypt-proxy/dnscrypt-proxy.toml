@@ -29,7 +29,7 @@
 ##
 ## Remove the leading # first to enable this; lines starting with # are ignored.
 
-server_names = ['cloudflare', 'cloudflare-ipv6']
+server_names = ['mullvad-doh']
 
 
 ## List of local addresses and ports to listen to. Can be IPv4 and/or IPv6.
@@ -255,7 +255,7 @@ cert_refresh_delay = 240
 ## not be sent there. If you're using DNSCrypt or Anonymized DNS and your
 ## lists are up to date, these resolvers will not even be used.
 
-bootstrap_resolvers = ['1.1.1.1:53', '1.0.0.1:53']
+bootstrap_resolvers = ['8.8.8.8:53', '8.8.4.4:53']
 
 
 ## Always use the bootstrap resolver before the system DNS settings.
