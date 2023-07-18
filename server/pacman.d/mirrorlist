@@ -3,7 +3,6 @@
 # With:       reflector --country us --age 6 --latest 50 --protocol https --sort rate
 # When:       2023-01-24 04:17:55 UTC
 
-Server = https://archmirror1.octyl.net/$repo/os/$arch
 Server = https://ridgewireless.mm.fcix.net/archlinux/$repo/os/$arch
 Server = https://mirror.arizona.edu/archlinux/$repo/os/$arch
 Server = https://ziply.mm.fcix.net/archlinux/$repo/os/$arch
