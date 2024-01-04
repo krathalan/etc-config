@@ -2,5 +2,4 @@ modules_force_load: amdgpu
 universal: false
 compression: zstd
 strip: true
-vconsole: true
 enable_lvm: true
