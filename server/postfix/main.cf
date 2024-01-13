@@ -4,8 +4,8 @@
 # Reject email if SMTP client hostname doesn’t have valid A record or if MAIL FROM domain has heither MX record nor A record
 smtpd_sender_restrictions = permit_mynetworks, permit_sasl_authenticated, check_sender_access hash:/etc/postfix/blacklisted_roles, reject_unknown_sender_domain, reject_unknown_reverse_client_hostname, reject_unknown_client_hostname
 
-# Use Spamhaus reputation block lists
-smtpd_client_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination, reject_rbl_client zen.spamhaus.org, reject_rbl_client cbl.abuseat.org, permit
+# Block domains in /etc/postfix/access, use Spamhaus reputation block lists
+smtpd_client_restrictions = permit_mynetworks, permit_sasl_authenticated, check_client_access hash:/etc/postfix/access, reject_unauth_destination, reject_rbl_client zen.spamhaus.org, reject_rbl_client cbl.abuseat.org, permit
 
 # Use postgrey for greylisting
 smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, check_policy_service unix:/run/postgrey/postgrey.sock
@@ -58,6 +58,7 @@ smtpd_sasl_tls_security_options = noanonymous
 # Misc
 myhostname = mail.krathalan.net
 mydestination = $myhostname, krathalan.net, localhost, localhost.localdomain, localhost
+parent_domain_matches_subdomains = debug_peer_list,fast_flush_domains,mynetworks,permit_mx_backup_networks,qmqpd_authorized_clients,relay_domains,smtpd_access_maps
 
 # Other/default trash
 smtpd_banner = $myhostname ESMTP $mail_name
