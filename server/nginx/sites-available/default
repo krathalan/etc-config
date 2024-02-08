@@ -44,8 +44,8 @@ server {
     try_files $uri $uri/ =404;
   }
 
-  listen [::]:443 ssl http2 ipv6only=on; # managed by Certbot
-  listen 443 ssl http2; # managed by Certbot
+  listen [::]:443 ssl; # managed by Certbot
+  listen 443 ssl; # managed by Certbot
   ssl_certificate /etc/letsencrypt/live/krathalan.net/fullchain.pem; # managed by Certbot
   ssl_certificate_key /etc/letsencrypt/live/krathalan.net/privkey.pem; # managed by Certbot
   include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
