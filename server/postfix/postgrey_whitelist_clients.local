@@ -19,4 +19,7 @@
 /^.*iphmx\.com$/
 /^.*\.outbound-mail\.sendgrid\.net$/
 /^.*taxhawk\.com$/
+/^.*nelnet\.net$/
+/^.*lemonade\.com$/
+/^.*spamhaus\.org$/
 newegg.com
