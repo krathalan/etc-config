@@ -483,11 +483,10 @@
 #
 #                                                                      ACCESS(5)
 
-# After updating, run `sudo postmap /etc/postfix/access`
-
 redir.epik.com REJECT
 nxcli.io REJECT
 nxcli.net REJECT
-xb8jcx8.onmicrosoft.com REJECT
-x24m2v2.onmicrosoft.com REJECT
+onmicrosoft.com REJECT
+dromanydschooler.org REJECT
 hamamzajil.co REJECT
+vdmltd.com REJECT
