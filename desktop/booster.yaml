@@ -1,4 +1,4 @@
-modules_force_load: amdgpu
+modules_force_load: amdgpu,hid_generic
 universal: false
 compression: zstd
 strip: true
