@@ -16,7 +16,7 @@ server {
     fancyindex_css_href "https://krathalan.net/index.css";
   }
 
-  location /school-projects/ {
+  location /storage/willina-pictures/ {
     fancyindex on;
     fancyindex_exact_size off;
     fancyindex_localtime on;
