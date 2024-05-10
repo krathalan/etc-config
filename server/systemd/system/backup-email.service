@@ -1,5 +1,5 @@
 [Unit]
-Description=Backup /etc and /home
+Description=Perform borg backup for /etc, /home/, and /var/lib/radicale
 
 [Service]
 Type=oneshot
