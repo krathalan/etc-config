@@ -16,6 +16,7 @@ Defaults editor = "/usr/bin/nano"
 ##
 root ALL=(ALL) ALL
 anders ALL=(ALL) ALL
+jamie ALL=(ALL) ALL
 
 ## Uncomment to allow members of group wheel to execute any command
 # %wheel ALL=(ALL) ALL

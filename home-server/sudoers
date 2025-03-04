@@ -16,6 +16,7 @@ Defaults editor = "/usr/bin/nano"
 ##
 root ALL=(ALL) ALL
 anders ALL=(ALL) ALL
+jamie ALL=(ALL) ALL
 
 ## Krack commands
 builder ALL=(ALL) NOPASSWD:/usr/bin/makechrootpkg, /usr/bin/arch-nspawn
