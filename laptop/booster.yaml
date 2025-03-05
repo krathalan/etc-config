@@ -1,5 +1,5 @@
+modules: amdgpu,hid_generic
 universal: false
-modules: i915,hid_generic
 compression: lz4
 strip: true
 enable_lvm: true
