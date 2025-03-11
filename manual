@@ -4,11 +4,6 @@ See `ksa` script in ~/git/miscellaneous-scripts/.
 -> make_makepkg_chroot
 -> etc.
 
-#################
-# CPU Microcode #
-#################
-Install either amd-ucode or intel-ucode manually.
-
 ############
 # AppArmor #
 ############
@@ -33,13 +28,6 @@ TL;DR:
       /dev/sda1  /           ext4  defaults,discard   0  1
    for xfs, enable fstrim.timer
 
-###############
-# home-server #
-###############
-You may run into the following issues:
-1. pihole web won't load the FTL information
-    solution: add 'http' and 'pihole' users to the 'proc' group
-
 #################
 # Miscellaneous #
 #################
@@ -47,8 +35,6 @@ You may wish to consider using noatime in your root partition mount options.
 If using Xorg, ensure Xorg is running rootless.
 If using Wayland, consider disabling Xwayland.
 Use booster for initramfs.
-Copy fox.sh to /usr/bin and chown root:root.
-Run `vdirsyncer discover contacts`.
 Set up vscode with Material Theme, Material Theme Icons, and Shellcheck extensions.
 Set up ~/.local/share/chromium-extensions.
 Set up secure boot.
